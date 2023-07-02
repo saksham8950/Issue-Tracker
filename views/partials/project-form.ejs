@@ -1,0 +1,95 @@
+<!-- Button trigger modal -->
+<!-- It is in views/partial/navbar.ejs -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="projectModal"
+  tabindex="-1"
+  aria-labelledby="projectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a New Project</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <grammarly-extension
+        data-grammarly-shadow-root="true"
+        style="position: absolute; top: 0px; left: 0px; pointer-events: none"
+        class="dnXmp"
+      ></grammarly-extension
+      ><grammarly-extension
+        data-grammarly-shadow-root="true"
+        style="position: absolute; top: 0px; left: 0px; pointer-events: none"
+        class="dnXmp"
+      ></grammarly-extension>
+
+      <div class="px-4 pt-4">
+        <form action="" method="POST">
+          <div class="form-group row mb-3">
+            <label for="title" class="col-sm-3 col-form-label">Title</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                readonly=""
+                class="form-control"
+                id="title"
+                value=""
+                placeholder="Enter Title"
+              />
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <label for="author" class="col-sm-3 col-form-label">Author</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                readonly=""
+                class="form-control"
+                id="author"
+                value=""
+                placeholder="Enter Author's Name"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="description" class="col-sm-3 col-form-label mt-4"
+              >Description</label
+            >
+            <div class="col-sm-9">
+              <textarea
+                class="form-control"
+                id="description"
+                rows="3"
+                spellcheck="false"
+                data-ms-editor="true"
+                style="height: 163px"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer mt-4 justify-content-evenly">
+            <button type="submit" class="btn btn-info">Create Project</button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

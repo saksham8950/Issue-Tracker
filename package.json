@@ -1,0 +1,21 @@
+{
+  "name": "issue-tracker-v1",
+  "version": "1.0.0",
+  "description": "A NodeJs Application - Issue Tracker made to organise which project has which issue and keep track of it",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Saksham",
+  "license": "MIT",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.3.1",
+    "nodemon": "^2.0.22"
+  }
+}

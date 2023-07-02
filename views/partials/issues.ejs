@@ -1,0 +1,144 @@
+<div id="myTabContent" class="tab-content p-2 pt-3 p-lg-4">
+  <div class="tab-pane fade active show" id="allIssue" role="tabpanel">
+    <div class="card mb-3 rounded">
+      <h3 class="card-header fs-5">
+        <span class="badge rounded-pill bg-danger p-2">Labels</span>
+      </h3>
+      <div class="card-body">
+        <h5 class="card-title fs-3">Title</h5>
+        <h6 class="card-subtitle text-muted fs-5">Author</h6>
+        <p class="card-text mt-3">
+          Description:- Some quick example text to build on the card title and
+          make up the bulk of the card's content. Some quick example text to
+          build on the card title and make up the bulk of the card's content.
+        </p>
+      </div>
+
+      <div class="container text-center mb-3">
+        <div class="row justify-content-evenly">
+          <a
+            href="#"
+            class="btn btn-info col-sm-4 col-lg-3"
+            data-bs-toggle="modal"
+            data-bs-target="#editIssueModal"
+            >Edit</a
+          >
+          <a href="#" class="btn btn-danger col-sm-4 col-lg-3">Delete</a>
+        </div>
+      </div>
+
+      <div class="card-footer text-muted">2 days ago</div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="filterIssue" role="tabpanel">
+    <div class="d-flex align-items-center flex-column mt-4">
+      <form action="" class="" method="post">
+        <div class="form-group d-flex gap-5">
+          <label for="checkLabels" class="form-label">Select Labels</label>
+          <div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                Bug
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                UI Component
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group d-flex gap-5 mt-4">
+          <label for="authors" class="form-label">Select Author</label>
+          <div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="optionRadios"
+                id="optionRadios1"
+                value="option1"
+                checked=""
+              />
+              <label class="form-check-label" for="optionRadios1">
+                Author1
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                name="optionRadios"
+                type="radio"
+                value=""
+                id="optionRadios2"
+              />
+              <label class="form-check-label" for="optionRadios1">
+                Author2
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button type="submit" class="btn btn-info">Filter Issue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="searchIssue" role="tabpanel">
+    <div class="">
+      <form action="" method="POST" class="">
+        <div class="form-group row mt-4">
+          <label for="title" class="form-label col-sm-3">Title</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              aria-describedby="titleHelp"
+              placeholder="Enter Title"
+            />
+            <small id="titleHelp" class="form-text text-muted"
+              >Enter relevent Keyword to search through titles.</small
+            >
+          </div>
+        </div>
+        <div class="form-group row mt-4">
+          <label for="description" class="form-label col-sm-3"
+            >Description</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              aria-describedby="descriptionHelp"
+              placeholder="Enter description"
+            />
+            <small id="titleHelp" class="form-text text-muted"
+              >Enter relevent Keyword to search through descriptions.</small
+            >
+          </div>
+        </div>
+        <div class="mt-4">
+          <button type="submit" class="btn btn-info">Search Issue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include ("./edit-issue-form.ejs"); %>
