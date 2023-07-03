@@ -9,24 +9,36 @@
         <th scope="col">#</th>
         <th scope="col">Title of Project</th>
         <th scope="col">Author</th>
-        <th scope="col" style="width: 250px;">Description</th>
+        <th scope="col" style="width: 250px">Description</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
+      <% for( let project of projects ) { %>
       <tr>
         <th scope="row">1</th>
-        <td>Title</td>
-        <td>Author</td>
-        <td class="d-inline-block text-truncate" style="width: 250px;">Description Description Description </td>
-        <td class="text-center">
-          <a href="/project/" class="btn btn-block btn-primary">View</a>
+        <td><%= project.title %></td>
+        <td><%= project.author %></td>
+        <td class="d-inline-block text-truncate" style="width: 250px">
+          <%= project.description %>
         </td>
         <td class="text-center">
-          <a href="#" class="btn btn-block btn-danger">Delete</a>
+          <a
+            href="/project/<%= project._id %>"
+            class="btn btn-block btn-primary"
+            >View</a
+          >
+        </td>
+        <td class="text-center">
+          <a
+            href="/project/delete/<%= project._id %>"
+            class="btn btn-block btn-danger"
+            >Delete</a
+          >
         </td>
       </tr>
+      <% } %>
     </tbody>
   </table>
 </div>

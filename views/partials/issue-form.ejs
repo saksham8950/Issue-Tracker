@@ -23,21 +23,17 @@
         data-grammarly-shadow-root="true"
         style="position: absolute; top: 0px; left: 0px; pointer-events: none"
         class="dnXmp"
-      ></grammarly-extension
-      ><grammarly-extension
-        data-grammarly-shadow-root="true"
-        style="position: absolute; top: 0px; left: 0px; pointer-events: none"
-        class="dnXmp"
       ></grammarly-extension>
 
       <div class="px-4 pt-4">
-        <form action="" method="POST">
+        <form action="/project/issue/create/<%= project._id %>" method="POST">
           <div class="form-group row mb-3">
             <label for="title" class="col-sm-3 col-form-label">Title</label>
             <div class="col-sm-9">
               <input
                 type="text"
-                readonly=""
+                name="title"
+                required
                 class="form-control"
                 id="title"
                 value=""
@@ -52,7 +48,10 @@
             <div class="col-sm-9">
               <textarea
                 class="form-control"
+                name="description"
                 id="description"
+                placeholder="Describe your issue..."
+                required
                 rows="3"
                 spellcheck="false"
                 data-ms-editor="true"
@@ -60,6 +59,28 @@
               ></textarea>
             </div>
           </div>
+          <% if (project.labels.length>0) { %>
+          <div class="mb-3">
+            <a
+              class="btn btn-outline-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              href="#"
+              role="button"
+              id="labelBtnDrop"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Label</a
+            >
+
+            <div class="dropdown-menu" aria-labelledby="labelBtnDrop">
+              <% for(let label of project.labels) { %>
+              <a href="#" class="dropdown-item" data-label="<%= label %>"
+                ><%= label %></a
+              >
+              <% } %>
+            </div>
+          </div>
+          <% } %>
           <div class="form-group row mb-3">
             <label for="addLabels" class="col-sm-3 col-form-label"
               >Add Labels</label
@@ -68,24 +89,60 @@
               <div class="form-check">
                 <input
                   class="form-check-input"
+                  name="labels"
                   type="checkbox"
-                  value=""
-                  id="flexCheckChecked"
+                  value="Bug"
+                  id="bug"
                   checked=""
                 />
-                <label class="form-check-label" for="flexCheckChecked">
-                  Bug
+                <label class="form-check-label" for="bug"> Bug </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="labels"
+                  type="checkbox"
+                  value="UI Improvement"
+                  id="ui-improvement"
+                />
+                <label class="form-check-label" for="ui-improvement">
+                  UI Improvement
                 </label>
               </div>
               <div class="form-check">
                 <input
                   class="form-check-input"
+                  name="labels"
                   type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  value="Documentation"
+                  id="documentation"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
-                  UI Component
+                <label class="form-check-label" for="documentation">
+                  Documentation
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="labels"
+                  type="checkbox"
+                  value="Enhancement"
+                  id="enhancement"
+                />
+                <label class="form-check-label" for="enhancement">
+                  Enhancement
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  name="labels"
+                  type="checkbox"
+                  value="Duplicate"
+                  id="duplicate"
+                />
+                <label class="form-check-label" for="duplicate">
+                  Duplicate
                 </label>
               </div>
             </div>
@@ -95,10 +152,10 @@
             <div class="col-sm-9">
               <input
                 type="text"
-                readonly=""
+                name="author"
+                required
                 class="form-control"
                 id="author"
-                value=""
                 placeholder="Enter Author's Name"
               />
             </div>
@@ -119,3 +176,5 @@
     </div>
   </div>
 </div>
+
+<script src="/assets/labelDropdown.js"></script>

@@ -27,25 +27,20 @@
         data-grammarly-shadow-root="true"
         style="position: absolute; top: 0px; left: 0px; pointer-events: none"
         class="dnXmp"
-      ></grammarly-extension
-      ><grammarly-extension
-        data-grammarly-shadow-root="true"
-        style="position: absolute; top: 0px; left: 0px; pointer-events: none"
-        class="dnXmp"
       ></grammarly-extension>
 
       <div class="px-4 pt-4">
-        <form action="" method="POST">
+        <form action="/project/create" method="POST">
           <div class="form-group row mb-3">
             <label for="title" class="col-sm-3 col-form-label">Title</label>
             <div class="col-sm-9">
               <input
                 type="text"
-                readonly=""
+                name="title"
+                required
                 class="form-control"
                 id="title"
-                value=""
-                placeholder="Enter Title"
+                placeholder="Enter Title of Project"
               />
             </div>
           </div>
@@ -54,10 +49,10 @@
             <div class="col-sm-9">
               <input
                 type="text"
-                readonly=""
+                name="author"
+                required
                 class="form-control"
                 id="author"
-                value=""
                 placeholder="Enter Author's Name"
               />
             </div>
@@ -69,10 +64,11 @@
             <div class="col-sm-9">
               <textarea
                 class="form-control"
+                name="description"
+                placeholder="Write something about your project..."
                 id="description"
+                required
                 rows="3"
-                spellcheck="false"
-                data-ms-editor="true"
                 style="height: 163px"
               ></textarea>
             </div>

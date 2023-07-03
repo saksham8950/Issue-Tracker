@@ -1,29 +1,45 @@
-
-<nav class="navbar sticky-top navbar-expand-lg bg-light" data-bs-theme="light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Issue Tracker</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav
+  class="navbar sticky-top shadow navbar-expand-lg bg-light"
+  data-bs-theme="light"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Issue Tracker</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto disabled"></ul>
+      <div class="text-center mt-4 mt-lg-0">
+        <% if( title === "Project Details"){ %>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#issueModal"
+        >
+          Create Issue
         </button>
-        <div class="collapse  navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto disabled">
-
-            </ul>
-            <div class="text-center mt-4 mt-lg-0 ">
-                <% if( title === "Project Details"){ %> 
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#issueModal">
-                        Create Issue
-                    </button>
-                    <% }else{ %>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#projectModal">
-                        Create New Project
-                    </button>
-                <% } %>                
-            </div>
-        </div>
+        <% }else{ %>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#projectModal"
+        >
+          Create New Project
+        </button>
+        <% } %>
+      </div>
     </div>
+  </div>
 </nav>
 
 <%- include ("./project-form.ejs"); %>
-<%- include ("./issue-form.ejs"); %>
