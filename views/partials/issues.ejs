@@ -1,38 +1,37 @@
 <div id="myTabContent" class="tab-content p-2 pt-3 p-lg-4">
   <div class="tab-pane fade active show" id="allIssue" role="tabpanel">
-    <% for(let issue of project.issues) { %>
-    <div class="card mb-3 rounded">
-      <h3 class="card-header fs-5">
-        <% for(let lab of issue.labels) { %>
-        <span class="badge rounded-pill bg-danger p-2"><%= lab.label %></span>
-        <% } %>
-      </h3>
-      <div class="card-body">
-        <h5 class="card-title fs-3"><%= issue.title %></h5>
-        <h6 class="card-subtitle text-muted fs-5"><%= issue.author %></h6>
-        <p class="card-text mt-3"><%= issue.description %></p>
-      </div>
+    <div class="row">
+      <% for(let issue of project.issues) { %>
+      <div class="col-md-6">
+        <div class="card mb-3 rounded">
+          <h3 class="card-header row g-2 flex-wrap fs-5">
+            <% for(let lab of issue.labels) { %>
+            <div class="col-auto">
+              <span class="badge rounded-pill bg-danger p-2"><%= lab %></span>
+            </div>
+            <% } for(let key of issue.keywords) { %>
+            <div class="col-auto">
+              <span class="badge rounded-pill bg-info p-2"><%= key %></span>
+            </div>
+            <% } %>
+          </h3>
+          <div class="card-body">
+            <h5 class="card-title fs-3"><%= issue.title %></h5>
+            <h6 class="card-subtitle text-muted fs-5"><%= issue.author %></h6>
+            <p class="card-text mt-3"><%= issue.description %></p>
+          </div>
 
-      <div class="container text-center mb-3">
-        <div class="row justify-content-evenly">
-          <a
-            href="#"
-            class="btn btn-info col-sm-4 col-lg-3"
-            data-bs-toggle="modal"
-            data-bs-target="#editIssueModal"
-            >Edit</a
-          >
-          <a
-            href="/project/issue/delete/<%= issue._id %>"
-            class="btn btn-danger col-sm-4 col-lg-3"
-            >Delete</a
-          >
+          <div class="container mb-3">
+            <a
+              href="/project/issue/delete/<%= issue._id %>"
+              class="btn btn-danger"
+              >Delete</a
+            >
+          </div>
         </div>
       </div>
-
-      <div class="card-footer text-muted">2 days ago</div>
+      <% } %>
     </div>
-    <% } %>
   </div>
 
   <div class="tab-pane fade" id="filterIssue" role="tabpanel">
@@ -144,5 +143,3 @@
     </div>
   </div>
 </div>
-
-<%- include ("./edit-issue-form.ejs"); %>
