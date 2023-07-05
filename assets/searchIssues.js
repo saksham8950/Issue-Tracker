@@ -22,24 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
       searchIssueForm.querySelector('input[name="des"]').value;
 
     //add issue to searched issues array
-    // searchIssues.map((el) => {
-    //   if (el.title == titleValue && el.description == descriptionValue) {
-    //     if (!searchedIssues.includes(el)) {
-    //       searchedIssues.push(el);
-    //     }
-    //   }
-    // });
-
     let searchedIssues = searchIssues.filter((el) => {
+      const lowercaseTitle = el.title.toLowerCase();
+      const lowercaseDescription = el.description.toLowerCase();
       if (titleValue && descriptionValue) {
         return (
-          el.title.includes(titleValue) &&
-          el.description.includes(descriptionValue)
+          lowercaseTitle.includes(titleValue) &&
+          lowercaseDescription.includes(descriptionValue)
         );
       } else if (titleValue) {
-        return el.title.includes(titleValue);
+        return lowercaseTitle.includes(titleValue);
       } else if (descriptionValue) {
-        return el.description.includes(descriptionValue);
+        return lowercaseDescription.includes(descriptionValue);
       }
       return false;
     });
