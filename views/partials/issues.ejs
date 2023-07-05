@@ -35,63 +35,115 @@
   </div>
 
   <div class="tab-pane fade" id="filterIssue" role="tabpanel">
-    <div class="d-flex align-items-center flex-column mt-4">
-      <form action="" class="" method="post">
+    <div class="d-flex align-items-center flex-column mt-4 mb-3">
+      <form action="/" class="" method="get" id="filter-issue-form">
         <div class="form-group d-flex gap-5">
           <label for="checkLabels" class="form-label">Select Labels</label>
-          <div>
+          <div class="d-flex gap-4 flex-wrap">
             <div class="form-check">
               <input
                 class="form-check-input"
+                name="labels"
                 type="checkbox"
-                value=""
-                id="flexCheckDefault"
+                value="Bug"
+                id="bug"
               />
-              <label class="form-check-label" for="flexCheckDefault">
-                Bug
+              <label class="form-check-label" for="bug"> Bug </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                name="labels"
+                type="checkbox"
+                value="UI Improvement"
+                id="ui-improvement"
+              />
+              <label class="form-check-label" for="ui-improvement">
+                UI Improvement
               </label>
             </div>
             <div class="form-check">
               <input
                 class="form-check-input"
+                name="labels"
                 type="checkbox"
-                value=""
-                id="flexCheckDefault"
+                value="Documentation"
+                id="documentation"
               />
-              <label class="form-check-label" for="flexCheckDefault">
-                UI Component
+              <label class="form-check-label" for="documentation">
+                Documentation
               </label>
             </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                name="labels"
+                type="checkbox"
+                value="Enhancement"
+                id="enhancement"
+              />
+              <label class="form-check-label" for="enhancement">
+                Enhancement
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                name="labels"
+                type="checkbox"
+                value="Duplicate"
+                id="duplicate"
+              />
+              <label class="form-check-label" for="duplicate">
+                Duplicate
+              </label>
+            </div>
+            <%let i = 0; %> <% for( let key of project.keywords) { %>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                name="labels"
+                type="checkbox"
+                value="<%= key %>"
+                id="key-<%= key %>-<%= i %>"
+              />
+              <label class="form-check-label" for="<%= key %>-<%= i %>">
+                <%= key %>
+              </label>
+            </div>
+            <% i++; %> <% } %>
           </div>
         </div>
         <div class="form-group d-flex gap-5 mt-4">
           <label for="authors" class="form-label">Select Author</label>
-          <div>
+          <div class="d-flex gap-4 flex-wrap">
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="radio"
-                name="optionRadios"
-                id="optionRadios1"
-                value="option1"
+                name="author"
+                id="null"
+                value=""
                 checked=""
               />
-              <label class="form-check-label" for="optionRadios1">
-                Author1
-              </label>
+              <label class="form-check-label" for="null"> No </label>
             </div>
+            <% let encounteredAuthors = new Set(); %> <% for( let issue of
+            project.issues ) { %> <% if (!encounteredAuthors.has(issue.author))
+            { %>
             <div class="form-check">
               <input
                 class="form-check-input"
-                name="optionRadios"
+                name="author"
                 type="radio"
-                value=""
-                id="optionRadios2"
+                value="<%= issue.author %>"
+                id="<%= issue.author %>"
               />
-              <label class="form-check-label" for="optionRadios1">
-                Author2
+              <label class="form-check-label" for="<%= issue.author %>">
+                <%= issue.author %>
               </label>
             </div>
+            <% encounteredAuthors.add(issue.author); %> <% } %> <% } %>
           </div>
         </div>
         <div class="mt-4">
@@ -99,11 +151,12 @@
         </div>
       </form>
     </div>
+    <div id="issues-list" class="row"></div>
   </div>
 
   <div class="tab-pane fade" id="searchIssue" role="tabpanel">
-    <div class="">
-      <form action="" method="POST" class="">
+    <div class="mb-3">
+      <form action="/" method="get" class="" id="search-issue-form">
         <div class="form-group row mt-4">
           <label for="title" class="form-label col-sm-3">Title</label>
           <div class="col-sm-9">
@@ -111,6 +164,7 @@
               type="text"
               class="form-control"
               id="title"
+              name="tie"
               aria-describedby="titleHelp"
               placeholder="Enter Title"
             />
@@ -126,12 +180,13 @@
           <div class="col-sm-9">
             <input
               type="text"
+              name="des"
               class="form-control"
               id="description"
               aria-describedby="descriptionHelp"
               placeholder="Enter description"
             />
-            <small id="titleHelp" class="form-text text-muted"
+            <small id="descriptionHelp" class="form-text text-muted"
               >Enter relevent Keyword to search through descriptions.</small
             >
           </div>
@@ -141,5 +196,9 @@
         </div>
       </form>
     </div>
+    <div id="search-issues-list" class="row"></div>
   </div>
 </div>
+<div id="issue-data" data="<%=JSON.stringify(project.issues)%>"></div>
+<script src="/assets/filterIssues.js"></script>
+<script src="/assets/searchIssues.js"></script>

@@ -21,19 +21,32 @@ module.exports.createIssue = async (req, res) => {
       project.issues.push(issue);
 
       // Push labelsin the Project
-      // if (!(typeof req.body.labels === "string")) {
-      //   for (let label of req.body.labels) {
-      //     let isPresent = project.labels.find((obj) => obj == label);
-      //     if (!isPresent) {
-      //       project.labels.push(label);
-      //     }
-      //   }
-      // } else {
-      //   let isPresent = project.labels.find((obj) => obj == req.body.labels);
-      //   if (!isPresent) {
-      //     project.labels.push(req.body.labels);
-      //   }
-      // }
+      if (!(typeof keywords === "string")) {
+        for (let label of req.body.labels) {
+          let isPresent = project.labels.find((obj) => obj == label);
+          if (!isPresent) {
+            project.labels.push(label);
+          }
+        }
+      } else {
+        let isPresent = project.labels.find((obj) => obj == req.body.labels);
+        if (!isPresent) {
+          project.labels.push(req.body.labels);
+        }
+      }
+      if (!(typeof req.body.labels === "string")) {
+        for (let key of keywords) {
+          let isPresent = project.keywords.find((obj) => obj == key);
+          if (!isPresent) {
+            project.keywords.push(key);
+          }
+        }
+      } else {
+        let isPresent = project.keywords.find((obj) => obj == keywords);
+        if (!isPresent) {
+          project.kaywords.push(keywords);
+        }
+      }
 
       await project.save();
       console.log("Issue created Successfully");

@@ -26,6 +26,11 @@ const projectSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    keywords: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,
