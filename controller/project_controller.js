@@ -20,8 +20,9 @@ module.exports.createProject = (req, res) => {
       project.save();
 
       // Project saved successfully
-      console.log("Project saved successfully");
-      console.log("#------------#-----------#");
+      req.flash("success_msg", "Project Created");
+      // console.log("Project saved successfully");
+      // console.log("#------------#-----------#");
       return res.redirect("back");
     })
     .catch((error) => {
@@ -35,8 +36,9 @@ module.exports.createProject = (req, res) => {
 module.exports.deleteProject = (req, res) => {
   Project.findOneAndDelete(req._id)
     .then(() => {
-      console.log("Deleted Successfully");
-      console.log("#------------#-----------#");
+      req.flash("error_msg", "Project Deleted");
+      // console.log("Deleted Successfully");
+      // console.log("#------------#-----------#");
       return res.redirect("back");
     })
     .catch((err) => {

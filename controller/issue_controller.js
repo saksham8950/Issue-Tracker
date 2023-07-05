@@ -49,7 +49,8 @@ module.exports.createIssue = async (req, res) => {
       }
 
       await project.save();
-      console.log("Issue created Successfully");
+      req.flash("success_msg", "Issue Created");
+      // console.log("Issue created Successfully");
       return res.redirect("back");
     } else {
       console.log("No such Project exist with this id");
@@ -67,13 +68,9 @@ module.exports.deleteIssue = async (req, res) => {
     const issue = await Issue.findById(req.params.id);
     const projectId = issue.project.id;
     issue.deleteOne();
+
+    req.flash("error_msg", "Issue Deleted");
     console.log("Issue Deleted");
-    // Project.findOneAndUpdate(
-    //   { id: projectId },
-    //   {
-    //     $pull: { issues: issue.id },
-    //   }
-    // );
     console.log("Project Updated Successfully");
     console.log("#------------#-----------#");
     return res.redirect("back");
